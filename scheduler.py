@@ -11,13 +11,13 @@ def job():
     bot = telegram.Bot(token=token)
     bot.send_message(chat_id= "1366377962", text= f'{date}\n\n{menu}')
 
-
+i = "08:30"
 # 평일 아침 8:30마다 job 함수를 실행합니다
-schedule.every().monday.at("8:30").do(job)
-schedule.every().tuesday.at("8:30").do(job)
-schedule.every().wednesday.at("8:30").do(job)
-schedule.every().thursday.at("8:30").do(job)
-schedule.every().friday.at("8:30").do(job)
+schedule.every().tuesday.at(i).do(job)
+schedule.every().monday.at(i).do(job)
+schedule.every().wednesday.at(i).do(job)
+schedule.every().thursday.at(i).do(job)
+schedule.every().friday.at(i).do(job)
 
 
 while True:
