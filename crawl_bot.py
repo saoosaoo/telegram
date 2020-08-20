@@ -1,7 +1,7 @@
 from telegram.ext import Updater
 from telegram.ext import MessageHandler, Filters, CommandHandler
 from crawl_lunch import crawl_lunch
-from download_music import download_music
+from download_music import download_music, search_music
 from file_uploader import Upload_file
 
 
@@ -17,7 +17,9 @@ def reply_message(update, context):
 def music_download(update, context):
     music = ' '. join(context.args)
     context.bot.send_message(chat_id=update.effective_chat.id, text=f"{music}을/를 다운로드 합니다.")
-    file_path = download_music(music)
+    url = search_music(music)
+    context.bot.send_message(chat_id=update.effective_chat.id, text=url)
+    file_path = download_music(music, url)
     Upload_file(file_path)
     context.bot.send_message(chat_id=update.effective_chat.id, text=f"구글 드라이브에 다운로드 완료!")
 
